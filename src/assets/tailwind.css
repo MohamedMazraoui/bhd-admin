@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  * {
+    @apply font-inter;
+  }
+
+  html {
+    @apply font-inter;
+  }
+
+  .disabled{
+    @apply pointer-events-none opacity-50;
+  }
+
+}
