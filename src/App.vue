@@ -64,12 +64,8 @@ async function checkAccessToken(){
   }
 
 
-  console.log("requireUserData.value: ", requireUserData.value);
-  console.log("user.accessToken: ", user.accessToken);
-
   if (requireUserData.value && user.accessToken ) {
     const getUserData = await userData();
-    console.log("getUserData: ", getUserData);
 
     if (getUserData?.data?._id) {
 
