@@ -442,7 +442,7 @@
 
                       <div class="flex-shrink-0">
                         <img class="h-10 w-10" src="/svg/help-me-move.svg" alt="" />
-                        <img class="h-10 w-10" :src="service.imageUrl" alt="" />
+                        <!-- <img class="h-10 w-10" :src="service.imageUrl" alt="" /> -->
                       </div>
 
                       <p class="grow text-sm font-medium text-gray-900 ">{{ service.name }}</p>
