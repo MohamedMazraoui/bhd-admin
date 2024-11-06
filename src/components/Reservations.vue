@@ -441,7 +441,7 @@
                     <div v-for="service in listServicesType" :key="service.value" @click="selectService(service)" :class="[selectedServicesType.find((obj)=> obj.value == service.value) ? 'border-blue-600' : 'border-gray-300 hover:border-gray-400', 'relative flex items-center space-x-3 rounded-lg border  bg-white hover:bg-gray-100 hover: px-5 py-3 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2  cursor-pointer']">
 
                       <div class="flex-shrink-0">
-                        <img class="h-10 w-10" :src="`/public${service.imageUrl}`" alt="" />
+                        <img class="h-10 w-10" :src='service.imageUrl' alt="" />
                       </div>
 
                       <p class="grow text-sm font-medium text-gray-900 ">{{ service.name }}</p>
