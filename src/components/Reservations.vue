@@ -441,8 +441,10 @@
                     <div v-for="service in listServicesType" :key="service.value" @click="selectService(service)" :class="[selectedServicesType.find((obj)=> obj.value == service.value) ? 'border-blue-600' : 'border-gray-300 hover:border-gray-400', 'relative flex items-center space-x-3 rounded-lg border  bg-white hover:bg-gray-100 hover: px-5 py-3 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2  cursor-pointer']">
 
                       <div class="flex-shrink-0">
-                        <img class="h-10 w-10" :src='"@/assets"+service.imageUrl' alt="" />
+                        <!-- <img class="h-10 w-10" :src='"@/assets"+service.imageUrl' alt="" /> -->
+                        <!-- <img class="h-10 w-10" :src="`@/assets${service.imageUrl}`" alt="" /> -->
                         <!-- <img class="h-10 w-10" :src="service.imageUrl" alt="" /> -->
+                        <img class="h-10 w-10" :src="getImageSrc(service.imageUrl)" :alt="service.imageUrl.split('svg/')[1].split('.svg')[0]" />
                       </div>
 
                       <p class="grow text-sm font-medium text-gray-900 ">{{ service.name }}</p>
@@ -1000,11 +1002,11 @@ let movingFromInfo = ref({
 });
 
 let listServicesType = ref([
-  {value: 'move', name: 'Help Me Move', imageUrl: '/svg/help-me-move.svg'},
-  {value: 'pack', name: 'Help Me Pack', imageUrl: '/svg/help-me-pack.svg'},
-  {value: 'junk_removal', name: 'Junk Removal', imageUrl: '/svg/junk-removal.svg'},
-  {value: 'rearranging_space', name: "I'm Rearranging My Space", imageUrl: '/svg/rearranging-space.svg'},
-  {value: 'storage_service', name: 'I Need Storage Services', imageUrl: '/svg/need-storage.svg'}
+  {value: 'move', name: 'Help Me Move', imageUrl: 'svg/help-me-move.svg'},
+  {value: 'pack', name: 'Help Me Pack', imageUrl: 'svg/help-me-pack.svg'},
+  {value: 'junk_removal', name: 'Junk Removal', imageUrl: 'svg/junk-removal.svg'},
+  {value: 'rearranging_space', name: "I'm Rearranging My Space", imageUrl: 'svg/rearranging-space.svg'},
+  {value: 'storage_service', name: 'I Need Storage Services', imageUrl: 'svg/need-storage.svg'}
 ])
 let selectedServicesType = ref([]);
 
@@ -1383,6 +1385,9 @@ function formatPhone() {
     const match = numberToFormat.match(/^(\d{3})(\d{3})(\d{4})$/);
     contactInfo.value.phone = `+1 (${match[1]}) ${match[2]}-${match[3]}`;
   }
+};
+const getImageSrc = (imagePath) => {
+  return new URL(`../assets/${imagePath}`, import.meta.url).href
 }
 // Hooks
 onMounted(()=>{
