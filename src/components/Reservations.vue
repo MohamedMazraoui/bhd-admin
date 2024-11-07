@@ -544,7 +544,7 @@
               </div>
 
               <!-- Payment Details -->
-              <div v-if="indexReservation >= 0 && selectedReservationDetails?.payment" class="border-t border-gray-200 pt-4 mt-4">
+              <div v-if="indexReservation >= 0" class="border-t border-gray-200 pt-4 mt-4">
                 <h2 class="text-lg font-semibold text-blue-600">Payment Details</h2>
                 <div class="border-blue-600 border-2 p-4 rounded-lg mt-1 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
 
@@ -594,7 +594,6 @@
 
                 </div>
               </div>
-
 
 
               <!-- Google Map -->
@@ -1018,7 +1017,7 @@ let additionals = ref({
   notes: ""
 });
 
-let enabledPayment = ref(true);
+let enabledPayment = ref(false);
 let payment = ref({
   price: 0,
   type: "cash",
@@ -1266,7 +1265,7 @@ async function createNewReservation(){
   if (!indexReservation.value) {
     finalObject.status = "pending";
   }
-  if (indexReservation.value >= 0 && payment.value?.price) {
+  if (indexReservation.value >= 0 && enabledPayment.value) {
     finalObject.payment = payment.value;
   }
 
